@@ -126,7 +126,7 @@ export default function Dashboard() {
   );
 }
 
-/* 🎨 STYLES */
+
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     minHeight: "100vh",
