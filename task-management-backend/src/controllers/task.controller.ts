@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import prisma from "../utils/prisma";
 
-// ➕ CREATE TASK
+
 export const createTask = async (req: any, res: Response) => {
   try {
     const { title } = req.body;
@@ -23,7 +23,7 @@ export const createTask = async (req: any, res: Response) => {
   }
 };
 
-// 📥 GET TASKS (pagination + search + filter)
+
 export const getTasks = async (req: any, res: Response) => {
   try {
     const { page = 1, search = "", status } = req.query;
@@ -32,13 +32,12 @@ export const getTasks = async (req: any, res: Response) => {
       where: {
         userId: req.user.userId,
 
-        // search by title
+        
         title: {
           contains: search,
           mode: "insensitive",
         },
 
-        // filter by status
         ...(status !== undefined && {
           completed: status === "true",
         }),
@@ -56,7 +55,7 @@ export const getTasks = async (req: any, res: Response) => {
   }
 };
 
-// ✏️ UPDATE TASK
+
 export const updateTask = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
@@ -73,7 +72,6 @@ export const updateTask = async (req: any, res: Response) => {
   }
 };
 
-// ❌ DELETE TASK
 export const deleteTask = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
@@ -88,7 +86,7 @@ export const deleteTask = async (req: any, res: Response) => {
   }
 };
 
-// 🔁 TOGGLE TASK STATUS
+
 export const toggleTask = async (req: any, res: Response) => {
   try {
     const { id } = req.params;
