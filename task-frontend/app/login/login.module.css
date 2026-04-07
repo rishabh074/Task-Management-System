@@ -1,4 +1,4 @@
-/* Full screen background */
+
 .container {
   height: 100vh;
   display: flex;
@@ -9,7 +9,7 @@
     no-repeat center center/cover;
 }
 
-/* Dark overlay */
+
 .overlay {
   position: absolute;
   width: 100%;
@@ -17,7 +17,7 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* Glass card */
+
 .card {
   position: relative;
   background: rgba(255, 255, 255, 0.1);
@@ -32,7 +32,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Title */
+
 .title {
   text-align: center;
   font-size: 24px;
@@ -45,7 +45,7 @@
   opacity: 0.8;
 }
 
-/* Inputs */
+
 .input {
   padding: 12px;
   border-radius: 8px;
@@ -54,7 +54,6 @@
   font-size: 14px;
 }
 
-/* Button */
 .button {
   padding: 12px;
   background: linear-gradient(135deg, #6366f1, #4f46e5);
@@ -70,7 +69,7 @@
   background: linear-gradient(135deg, #4f46e5, #4338ca);
 }
 
-/* Bottom text */
+
 .text {
   text-align: center;
   font-size: 14px;
