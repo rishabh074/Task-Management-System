@@ -15,11 +15,11 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Routes
+
 app.use("/auth", authRoutes);
 app.use("/tasks", taskRoutes);
 
-// Test protected route
+
 app.get("/protected", authMiddleware, (req, res) => {
   res.json({ message: "Access granted" });
 });
