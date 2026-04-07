@@ -6,7 +6,6 @@ import prisma from "../utils/prisma";
 const JWT_SECRET = process.env.JWT_SECRET || "secret123";
 const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh123";
 
-// 🔹 GENERATE TOKENS
 const generateTokens = (userId: string) => {
   const accessToken = jwt.sign({ userId }, JWT_SECRET, {
     expiresIn: "15m",
@@ -19,17 +18,17 @@ const generateTokens = (userId: string) => {
   return { accessToken, refreshToken };
 };
 
-// 🔹 REGISTER
+
 export const register = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
-    // validation
+
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
 
-    // check existing user
+   
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -38,10 +37,10 @@ export const register = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // hash password
+   
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // create user
+    
     const user = await prisma.user.create({
       data: {
         email,
@@ -61,7 +60,7 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-// 🔹 LOGIN
+
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -92,7 +91,7 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// 🔹 REFRESH TOKEN
+
 export const refresh = (req: Request, res: Response) => {
   try {
     const { refreshToken } = req.body;
